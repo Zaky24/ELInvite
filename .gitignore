@@ -1,0 +1,19 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+
+# skill & AI
+.agent/
+.agents/
+.claude/
+.devin/
+.gemini/
+.impeccable/
+.omp/
+.opencode/
+
+# file markdown
+DESIGN.md
+PRODUCT.md
+skills-lock.json

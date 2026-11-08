@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>ELInvite — Undangan Pernikahan Adat Minangkabau: Rizky & Adelia</title>
+  <meta name="title" content="ELInvite — Undangan Pernikahan Adat Minangkabau: Rizky & Adelia">
+  <meta name="description" content="Salasai ijab dikabua, kaciak banamo gadang bagala. Undangan Pernikahan Adat Minangkabau Rizky Pratama (Sutan Palimo Basa) & Adelia Putri Maharani.">
+  <meta name="theme-color" content="#FAF8F5">
+
+  <!-- Open Graph / WhatsApp / Socials -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ELInvite — Baralek Gadang: Rizky & Adelia (Adat Minangkabau)">
+  <meta property="og:description" content="Sabtu, 24 Oktober 2026 • Bersama mengharapkan doa restu Ninik Mamak, Bako, karib kerabat, dan handai tolan.">
+  <meta property="og:image" content="assets/images/hero-couple.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="ELInvite — Baralek Gadang: Rizky & Adelia (Adat Minangkabau)">
+  <meta property="twitter:description" content="Sabtu, 24 Oktober 2026 • Bersama mengharapkan doa restu Ninik Mamak, Bako, karib kerabat, dan handai tolan.">
+  <meta property="twitter:image" content="assets/images/hero-couple.jpg">
+
+  <!-- Favicon (Monogram) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%239E7D53'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF8F5' font-family='serif' font-size='15' font-weight='bold'>RA</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#FAF8F5',
+            'alabaster-surface': '#F5F1EB',
+            'alabaster-card': '#FFFFFF',
+            ink: '#1A1816',
+            'ink-body': '#2E2A27',
+            'ink-muted': '#665F58',
+            bronze: {
+              DEFAULT: '#9E7D53',
+              deep: '#7D5F38',
+              light: '#E4D5C2',
+              border: '#D8C5A8',
+            },
+            sage: {
+              DEFAULT: '#546351',
+              light: '#EEF2ED',
+            },
+            minang: {
+              red: '#8B261E',
+              gold: '#C5A059',
+            }
+          },
+          fontFamily: {
+            serif: ['Marcellus', 'Georgia', 'serif'],
+            script: ['Pinyon Script', 'cursive'],
+            humanist: ['Tenor Sans', 'sans-serif'],
+            sans: ['Jost', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Typography, Keyframes & System Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-alabaster text-ink-body font-humanist antialiased selection:bg-bronze-light selection:text-ink overflow-x-hidden relative">
+
+  <!-- =========================================================================
+       FLOATING AMBIENT CANVAS & AUDIO CONTROLS
+       ========================================================================= -->
+  <canvas id="petals-canvas" aria-hidden="true"></canvas>
+
+  <audio id="wedding-audio" loop preload="auto">
+    <source src="assets/audio/romantic-ambient.wav" type="audio/wav">
+  </audio>
+
+  <!-- Floating Audio Capsule Player -->
+  <aside class="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40" aria-label="Pemutar Musik">
+    <div class="floating-capsule rounded-full px-4 py-2 flex items-center gap-3 shadow-lg border border-bronze-border transition-all duration-300">
+      <button id="audio-toggle-btn" type="button" class="flex items-center gap-2.5 text-xs text-ink font-medium tracking-wide focus:outline-none" aria-label="Putar atau jeda musik latar">
+        <div id="disc-icon" class="w-8 h-8 rounded-full bg-ink flex items-center justify-center border-2 border-bronze shadow-inner transition-transform">
+          <div class="w-2.5 h-2.5 rounded-full bg-alabaster border border-bronze-light"></div>
+        </div>
+        <!-- Equalizer Bars -->
+        <div id="equalizer-bars" class="flex items-end gap-1 h-5 w-4 hidden" aria-hidden="true">
+          <span class="w-1 bg-bronze rounded-full bar-1"></span>
+          <span class="w-1 bg-bronze rounded-full bar-2"></span>
+          <span class="w-1 bg-bronze rounded-full bar-3"></span>
+        </div>
+        <span id="audio-status-text" class="hidden md:inline-block text-ink-muted text-xs pr-1">Musik Minang</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating Bottom Navigation Dock (Scroll Spy) -->
+  <nav id="bottom-dock" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 max-w-lg w-[92%] sm:w-auto" aria-label="Navigasi Undangan">
+    <div class="floating-capsule rounded-full px-4 py-2 flex items-center justify-between sm:justify-center gap-4 sm:gap-6 shadow-xl border border-bronze-border">
+      <a href="#beranda" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="Beranda">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="mt-0.5">Beranda</span>
+      </a>
+      <a href="#mempelai" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="Mempelai">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="mt-0.5">Mempelai</span>
+      </a>
+      <a href="#acara" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="Acara">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="mt-0.5">Acara</span>
+      </a>
+      <a href="#keluarga" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="Keluarga">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="mt-0.5">Keluarga</span>
+      </a>
+      <a href="#galeri" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="Galeri">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span class="mt-0.5">Galeri</span>
+      </a>
+      <a href="#rsvp" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="RSVP">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span class="mt-0.5">RSVP</span>
+      </a>
+      <a href="#hadiah" class="nav-dock-link flex flex-col items-center text-ink-muted hover:text-bronze transition-colors text-xs tracking-wider py-1" aria-label="Hadiah">
+        <svg class="w-5 h-5 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        <span class="mt-0.5">Kado</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       SECTION 1: CEREMONIAL ENVELOPE COVER (SPLASH SCREEN OVERLAY)
+       ========================================================================= -->
+  <div id="envelope-cover" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-alabaster paper-texture overflow-y-auto">
+    <div class="w-full max-w-md my-auto bg-alabaster-card border border-bronze-border p-8 sm:p-10 rounded-2xl shadow-2xl relative text-center">
+      <!-- Decorative Corner Accents -->
+      <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-bronze" aria-hidden="true"></div>
+      <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-bronze" aria-hidden="true"></div>
+      <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-bronze" aria-hidden="true"></div>
+      <div class="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-bronze" aria-hidden="true"></div>
+
+      <!-- Monogram Insignia -->
+      <div class="w-20 h-20 mx-auto rounded-full bg-alabaster border border-bronze-border flex items-center justify-center shadow-inner mb-5 relative">
+        <span class="font-script text-3xl text-bronze-deep select-none">R & A</span>
+      </div>
+
+      <p class="font-serif text-xs tracking-widest text-bronze uppercase mb-1">Baralek Gadang • Walimatul 'Urs</p>
+      <h1 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-2">Rizky & Adelia</h1>
+      <p class="text-xs text-ink-muted tracking-wider mb-6">Sabtu, 24 Oktober 2026 • Sasana Kriya TMII Jakarta</p>
+
+      <div class="editorial-rule w-3/4 mx-auto mb-6"></div>
+
+      <!-- Personalized Guest Name Frame -->
+      <div class="py-4 my-6 border-y border-bronze-border/60 text-center">
+        <p class="text-xs text-ink-muted tracking-wide mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+        <p id="guest-name-cover" class="font-serif text-2xl text-ink font-medium tracking-wide py-1">Tamu Undangan</p>
+        <p class="text-xs text-ink-muted leading-relaxed mt-1">Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Anda berkenan hadir.</p>
+      </div>
+
+      <!-- Open Invitation Button -->
+      <button id="open-invitation-btn" type="button" class="animate-wax-pulse inline-flex items-center justify-center gap-2.5 w-full py-3.5 px-6 rounded-full bg-bronze hover:bg-bronze-deep text-alabaster font-sans font-medium text-sm tracking-wider shadow-lg transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-bronze">
+        <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Buka Undangan</span>
+      </button>
+
+      <p class="text-xs text-ink-muted mt-4">Ketuk untuk membuka lembaran adat & memutar musik</p>
+      <div class="mt-5 pt-3 border-t border-bronze-border/30 flex items-center justify-center">
+        <a href="https://zaky24.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-bronze hover:text-bronze-deep font-sans transition-colors">
+          <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>ELInvite • Portofolio: Ira Zaky Elmar</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="w-full">
+
+    <!-- =======================================================================
+         SECTION 2: HERO & TRADITIONAL MINANG VOW BLESSING
+         ======================================================================= -->
+    <header id="beranda" class="relative min-h-screen flex items-center justify-center py-24 px-4 paper-texture overflow-hidden border-b border-bronze-border/40">
+      <div class="max-w-4xl mx-auto text-center relative z-10 reveal-on-scroll">
+        
+        <p class="font-serif text-xs sm:text-sm tracking-widest text-bronze uppercase mb-3">Undangan Pernikahan Adat Minangkabau</p>
+        <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl text-ink tracking-tight mb-2">Rizky & Adelia</h2>
+        <p class="font-serif text-sm sm:text-base text-bronze-deep tracking-widest mb-10">Marapulai (Sutan Palimo Basa) & Anak Daro</p>
+
+        <!-- Hero Couple Photo in Soft Sculpted Royal Arch -->
+        <div class="relative max-w-md sm:max-w-lg mx-auto mb-12 px-4 reveal-on-scroll reveal-delay-1">
+          <div class="relative rounded-t-full rounded-b-2xl overflow-hidden border-2 border-bronze-border shadow-2xl aspect-[3/4] bg-alabaster-surface">
+            <img src="assets/images/hero-couple.jpg" alt="Potret Sepasang Pengantin Adat Minangkabau Rizky dan Adelia" class="w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.03]">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+          <!-- Stamp Badge -->
+          <div class="absolute -bottom-4 right-8 bg-alabaster-card border border-bronze-border py-2 px-5 rounded-full shadow-md flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-minang-red"></span>
+            <span class="font-serif text-xs text-ink-body tracking-wider">Adat Basandi Syarak</span>
+          </div>
+        </div>
+
+        <!-- Sacred Quote & Pepatah Minang -->
+        <div class="max-w-2xl mx-auto journal-card p-8 sm:p-10 rounded-2xl relative text-center reveal-on-scroll reveal-delay-2">
+          <svg class="w-8 h-8 mx-auto text-bronze/60 mb-4 stroke-current fill-none stroke-[1.2]" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <blockquote class="text-sm sm:text-base text-ink-body leading-relaxed mb-4 italic">
+            "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+          </blockquote>
+          <cite class="font-serif text-xs sm:text-sm text-bronze not-italic tracking-wider block mb-4">— QS. Ar-Rum: 21</cite>
+          
+          <div class="editorial-rule w-1/2 mx-auto my-4"></div>
+
+          <p class="text-xs sm:text-sm text-ink-muted leading-relaxed font-serif italic">
+            "Kaciak banamo, gadang bagala. Kok jauah dapek diimbau, kok dakek dapek diragkuik. Barek samo dipikua, ringan samo dijinjiang."
+          </p>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- =======================================================================
+         SECTION 3: MEMPELAI (MARAPULAI & ANAK DARO)
+         ======================================================================= -->
+    <section id="mempelai" class="py-24 px-4 bg-alabaster relative">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Marapulai & Anak Daro</h2>
+          <p class="prose-measure mx-auto text-sm sm:text-base text-ink-muted leading-relaxed">
+            Dengan memohon rahmat dan ridho Allah SWT serta doa restu Ninik Mamak, Alim Ulama, Cadiak Pandai, Bako, dan karib kerabat, kami memperkenalkan kedua mempelai:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+          <!-- Marapulai (Mempelai Pria) -->
+          <div class="journal-card rounded-2xl p-8 text-center relative group reveal-on-scroll">
+            <div class="w-52 h-64 mx-auto mb-6 rounded-t-full rounded-b-xl overflow-hidden border border-bronze-border shadow-md bg-alabaster-surface">
+              <img src="assets/images/groom.jpg" alt="Foto Marapulai Rizky Pratama" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+            </div>
+            
+            <p class="text-xs text-minang-red tracking-widest font-semibold uppercase mb-1">Marapulai</p>
+            <h3 class="font-serif text-2xl text-ink font-medium tracking-wide mb-1">Rizky Pratama, S.T.</h3>
+            <p class="text-xs font-serif text-bronze-deep tracking-wider mb-4 italic">Gelar Adat: <strong>Sutan Palimo Basa</strong></p>
+
+            <div class="text-xs text-ink-muted leading-relaxed mb-6 space-y-2 border-t border-bronze-border/40 pt-4">
+              <p>
+                <strong class="text-ink font-medium">Suku Caniago</strong> • Kurai, Bukittinggi
+              </p>
+              <p>
+                Putra pertama dari pasangan:<br>
+                <strong class="text-ink font-medium">Bpk. Ir. Hendra Pratama (Dt. Bandaro Kayo)</strong><br>
+                & <strong class="text-ink font-medium">Ibu Hj. Siti Rohana</strong>
+              </p>
+              <p class="text-xs text-bronze tracking-wide pt-1">
+                Keluarga Besar Mamak Rumah & Bako Suku Caniago
+              </p>
+            </div>
+
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-sans text-bronze hover:text-bronze-deep border border-bronze-border rounded-full px-4 py-1.5 transition-colors">
+              <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>@rizky.pratama</span>
+            </a>
+          </div>
+
+          <!-- Anak Daro (Mempelai Wanita) -->
+          <div class="journal-card rounded-2xl p-8 text-center relative group reveal-on-scroll reveal-delay-1">
+            <div class="w-52 h-64 mx-auto mb-6 rounded-t-full rounded-b-xl overflow-hidden border border-bronze-border shadow-md bg-alabaster-surface">
+              <img src="assets/images/bride.jpg" alt="Foto Anak Daro Adelia Putri Maharani" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+            </div>
+
+            <p class="text-xs text-minang-red tracking-widest font-semibold uppercase mb-1">Anak Daro</p>
+            <h3 class="font-serif text-2xl text-ink font-medium tracking-wide mb-1">Adelia Putri Maharani, S.Ds.</h3>
+            <p class="text-xs font-serif text-bronze-deep tracking-wider mb-4 italic">Putri Berdarah Minangkabau</p>
+
+            <div class="text-xs text-ink-muted leading-relaxed mb-6 space-y-2 border-t border-bronze-border/40 pt-4">
+              <p>
+                <strong class="text-ink font-medium">Suku Koto</strong> • Koto Nan Ampek, Payakumbuh
+              </p>
+              <p>
+                Putri kedua dari pasangan:<br>
+                <strong class="text-ink font-medium">Bpk. Dr. H. Faisal Maharani (Dt. Marajo)</strong><br>
+                & <strong class="text-ink font-medium">Ibu Hj. Nurhayati</strong>
+              </p>
+              <p class="text-xs text-bronze tracking-wide pt-1">
+                Keluarga Besar Mamak Rumah & Bako Suku Koto
+              </p>
+            </div>
+
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-sans text-bronze hover:text-bronze-deep border border-bronze-border rounded-full px-4 py-1.5 transition-colors">
+              <svg class="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>@adelia.putrimaharani</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 4: SAVE THE DATE & LIVE COUNTDOWN
+         ======================================================================= -->
+    <section id="waktu" class="py-20 px-4 bg-alabaster-surface border-y border-bronze-border/40">
+      <div class="max-w-4xl mx-auto text-center reveal-on-scroll">
+        
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Menghitung Hari Bahagia</h2>
+        <p class="text-sm sm:text-base text-ink-muted mb-10">Sabtu, 24 Oktober 2026 • Pukul 08.00 WIB</p>
+
+        <!-- Live Countdown Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto mb-10">
+          <div class="bg-alabaster-card border border-bronze-border rounded-xl p-4 shadow-sm">
+            <span id="countdown-days" class="block font-serif text-3xl sm:text-4xl text-ink font-medium">00</span>
+            <span class="text-xs text-ink-muted uppercase tracking-wider">Hari</span>
+          </div>
+          <div class="bg-alabaster-card border border-bronze-border rounded-xl p-4 shadow-sm">
+            <span id="countdown-hours" class="block font-serif text-3xl sm:text-4xl text-ink font-medium">00</span>
+            <span class="text-xs text-ink-muted uppercase tracking-wider">Jam</span>
+          </div>
+          <div class="bg-alabaster-card border border-bronze-border rounded-xl p-4 shadow-sm">
+            <span id="countdown-minutes" class="block font-serif text-3xl sm:text-4xl text-ink font-medium">00</span>
+            <span class="text-xs text-ink-muted uppercase tracking-wider">Menit</span>
+          </div>
+          <div class="bg-alabaster-card border border-bronze-border rounded-xl p-4 shadow-sm">
+            <span id="countdown-seconds" class="block font-serif text-3xl sm:text-4xl text-ink font-medium">00</span>
+            <span class="text-xs text-ink-muted uppercase tracking-wider">Detik</span>
+          </div>
+        </div>
+
+        <!-- Calendar Actions -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a id="btn-google-calendar" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-bronze hover:bg-bronze-deep text-alabaster text-xs sm:text-sm font-sans font-medium tracking-wide shadow-md transition-colors">
+            <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Simpan ke Google Calendar</span>
+          </a>
+          <button id="btn-download-ics" type="button" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-alabaster-card hover:bg-alabaster border border-bronze-border text-ink text-xs sm:text-sm font-sans font-medium tracking-wide shadow-sm transition-colors">
+            <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Unduh Pengingat (.ics)</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 5: RANGKAIAN PROSESI ADAT & ACARA
+         ======================================================================= -->
+    <section id="acara" class="py-24 px-4 bg-alabaster">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Rangkaian Prosesi Adat & Acara</h2>
+          <p class="prose-measure mx-auto text-sm sm:text-base text-ink-muted leading-relaxed">
+            Rangkaian prosesi pernikahan adat Minangkabau kami laksanakan dengan penuh kekhidmatan:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          
+          <!-- 1. Malam Bainai -->
+          <div class="journal-card rounded-2xl p-7 relative flex flex-col justify-between reveal-on-scroll">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-alabaster-surface border border-bronze-border flex items-center justify-center text-minang-red mb-5">
+                <svg class="w-6 h-6 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h3 class="font-serif text-xl text-ink font-medium tracking-wide mb-1">Malam Bainai</h3>
+              <p class="text-xs text-bronze tracking-wider uppercase mb-5">Doa Kasih & Pelekatan Inai</p>
+
+              <div class="space-y-3 text-xs text-ink-body mb-6">
+                <div>
+                  <p class="font-medium text-ink">Jumat, 23 Oktober 2026</p>
+                  <p class="text-ink-muted">Pukul 19.30 WIB - Selesai</p>
+                </div>
+                <div>
+                  <p class="font-medium text-ink">Kediaman Keluarga Anak Daro</p>
+                  <p class="text-ink-muted leading-relaxed">Jl. Pinus Raya Blok B2 No. 18, Jakarta Selatan</p>
+                </div>
+                <div>
+                  <p class="font-medium text-ink">Busana:</p>
+                  <p class="text-ink-muted">Baju Kurung / Nuansa Emas & Merah Maroon</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-bronze-border/40">
+              <span class="inline-block px-3 py-1 bg-sage-light text-sage text-xs rounded-full font-medium">Khusus Keluarga & Kerabat Bako</span>
+            </div>
+          </div>
+
+          <!-- 2. Akad Nikah -->
+          <div class="journal-card rounded-2xl p-7 relative flex flex-col justify-between reveal-on-scroll reveal-delay-1">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-alabaster-surface border border-bronze-border flex items-center justify-center text-bronze mb-5">
+                <svg class="w-6 h-6 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 class="font-serif text-xl text-ink font-medium tracking-wide mb-1">Akad Nikah</h3>
+              <p class="text-xs text-bronze tracking-wider uppercase mb-5">Ijab Kabul & Gelar Marapulai</p>
+
+              <div class="space-y-3 text-xs text-ink-body mb-6">
+                <div>
+                  <p class="font-medium text-ink">Sabtu, 24 Oktober 2026</p>
+                  <p class="text-ink-muted">Pukul 08.00 - 10.00 WIB</p>
+                </div>
+                <div>
+                  <p class="font-medium text-ink">Masjid Sasana Kriya TMII</p>
+                  <p class="text-ink-muted leading-relaxed">Kompleks Taman Mini Indonesia Indah, Jakarta Timur</p>
+                </div>
+                <div>
+                  <p class="font-medium text-ink">Busana:</p>
+                  <p class="text-ink-muted">Busana Muslim Formal / Putih Bersih</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-bronze-border/40">
+              <span class="inline-block px-3 py-1 bg-sage-light text-sage text-xs rounded-full font-medium">Keluarga Besar & Saksi</span>
+            </div>
+          </div>
+
+          <!-- 3. Baralek Gadang (Resepsi Adat Minang) -->
+          <div class="journal-card rounded-2xl p-7 relative flex flex-col justify-between reveal-on-scroll reveal-delay-2">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-alabaster-surface border border-bronze-border flex items-center justify-center text-bronze mb-5">
+                <svg class="w-6 h-6 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              </div>
+              <h3 class="font-serif text-xl text-ink font-medium tracking-wide mb-1">Baralek Gadang</h3>
+              <p class="text-xs text-bronze tracking-wider uppercase mb-5">Resepsi Adat Minangkabau</p>
+
+              <div class="space-y-3 text-xs text-ink-body mb-6">
+                <div>
+                  <p class="font-medium text-ink">Sabtu, 24 Oktober 2026</p>
+                  <p class="text-ink-muted">Pukul 11.00 - 14.00 WIB</p>
+                </div>
+                <div>
+                  <p class="font-medium text-ink">Grand Ballroom Sasana Kriya</p>
+                  <p class="text-ink-muted leading-relaxed">Taman Mini Indonesia Indah, Jakarta Timur</p>
+                </div>
+                <div>
+                  <p class="font-medium text-ink">Busana:</p>
+                  <p class="text-ink-muted">Batik / Songket / Kebaya / Formal Elegan</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-bronze-border/40">
+              <span class="inline-block px-3 py-1 bg-bronze-light/40 text-bronze-deep text-xs rounded-full font-medium">Terbuka Untuk Seluruh Tamu Undangan</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Google Maps Venue Location Card -->
+        <div class="journal-card rounded-2xl overflow-hidden p-6 sm:p-8 reveal-on-scroll">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 class="font-serif text-xl sm:text-2xl text-ink font-medium tracking-wide mb-1">Lokasi Gedung Sasana Kriya TMII</h3>
+              <p class="text-xs sm:text-sm text-ink-muted">Sasana Kriya Grand Ballroom, Taman Mini Indonesia Indah, Cipayung, Jakarta Timur</p>
+            </div>
+            <a href="https://maps.google.com/?q=Sasana+Kriya+Taman+Mini+Indonesia+Indah" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-bronze hover:bg-bronze-deep text-alabaster text-xs sm:text-sm font-sans font-medium tracking-wide shadow-md transition-colors shrink-0">
+              <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              <span>Petunjuk Arah Google Maps</span>
+            </a>
+          </div>
+
+          <!-- Embedded Map -->
+          <div class="w-full h-72 sm:h-80 rounded-xl overflow-hidden border border-bronze-border relative">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8118671607567!2d106.89063077586884!3d-6.288463993700465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f2c695a4f78d%3A0xe7a50787a9321e1a!2sSasana%20Kriya%20TMII!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Peta Lokasi Gedung Sasana Kriya TMII">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 6: KEHORMATAN KELUARGA BESAR (MAMAK, BAKO, KERABAT)
+         ======================================================================= -->
+    <section id="keluarga" class="py-24 px-4 bg-alabaster-surface border-y border-bronze-border/40">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Kehormatan Keluarga Besar</h2>
+          <p class="prose-measure mx-auto text-sm sm:text-base text-ink-muted leading-relaxed">
+            "Anak dipangku kamanakan dibimbiang, urang kampuang dipatenggangkan."<br>
+            Ungkapan takzim dan terima kasih kepada segenap sesepuh adat, Ninik Mamak, Bako, dan karib kerabat dari kedua suku:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Keluarga Besar Marapulai -->
+          <div class="journal-card rounded-2xl p-7 reveal-on-scroll">
+            <h3 class="font-serif text-lg text-ink font-semibold mb-3 border-b border-bronze-border/40 pb-2">
+              Keluarga Marapulai (Suku Caniago)
+            </h3>
+            <ul class="text-xs text-ink-body space-y-2 leading-relaxed">
+              <li><strong class="text-ink">Ninik Mamak:</strong> Dt. Bandaro Kayo & Dt. Rangkayo Basa</li>
+              <li><strong class="text-ink">Mamak Rumah:</strong> Bpk. H. Syamsul Bahri & Bpk. Ir. Ridwan Caniago</li>
+              <li><strong class="text-ink">Bako:</strong> Keluarga Besar Suku Tanjuang, Bukittinggi</li>
+              <li><strong class="text-ink">Induak Bako:</strong> Ibu Hj. Rosmawati & Ibu Hj. Mardiah</li>
+            </ul>
+          </div>
+
+          <!-- Keluarga Besar Anak Daro -->
+          <div class="journal-card rounded-2xl p-7 reveal-on-scroll reveal-delay-1">
+            <h3 class="font-serif text-lg text-ink font-semibold mb-3 border-b border-bronze-border/40 pb-2">
+              Keluarga Anak Daro (Suku Koto)
+            </h3>
+            <ul class="text-xs text-ink-body space-y-2 leading-relaxed">
+              <li><strong class="text-ink">Ninik Mamak:</strong> Dt. Marajo & Dt. Mangkuto Sati</li>
+              <li><strong class="text-ink">Mamak Rumah:</strong> Bpk. Drs. H. Zulkifli Koto & Bpk. Ir. Arman Koto</li>
+              <li><strong class="text-ink">Bako:</strong> Keluarga Besar Suku Sikumbang, Payakumbuh</li>
+              <li><strong class="text-ink">Induak Bako:</strong> Ibu Hj. Ellyzar & Ibu Hj. Yulinar</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 7: GALERI MOMEN BAHAGIA (PHOTO GALLERY & LIGHTBOX)
+         ======================================================================= -->
+    <section id="galeri" class="py-24 px-4 bg-alabaster">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Galeri Momen Bahagia</h2>
+          <p class="prose-measure mx-auto text-sm sm:text-base text-ink-muted leading-relaxed">
+            Potret pre-wedding dan busana keagungan adat Minangkabau yang merekam rasa syukur menuju hari bahagia.
+          </p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+          
+          <div class="gallery-item cursor-pointer overflow-hidden rounded-2xl border border-bronze-border/60 bg-alabaster-surface aspect-[4/5] shadow-sm relative group reveal-on-scroll" data-index="0">
+            <img src="assets/images/hero-couple.jpg" alt="Keagungan Busana Adat Minang" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-alabaster-card/90 text-bronze shadow"><svg class="w-5 h-5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+            </div>
+          </div>
+
+          <div class="gallery-item cursor-pointer overflow-hidden rounded-2xl border border-bronze-border/60 bg-alabaster-surface aspect-[4/5] shadow-sm relative group reveal-on-scroll reveal-delay-1" data-index="1">
+            <img src="assets/images/bride.jpg" alt="Anak Daro dengan Suntiang Megah" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-alabaster-card/90 text-bronze shadow"><svg class="w-5 h-5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+            </div>
+          </div>
+
+          <div class="gallery-item cursor-pointer overflow-hidden rounded-2xl border border-bronze-border/60 bg-alabaster-surface aspect-[4/5] shadow-sm relative group reveal-on-scroll reveal-delay-2" data-index="2">
+            <img src="assets/images/groom.jpg" alt="Marapulai Rizky Pratama" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-alabaster-card/90 text-bronze shadow"><svg class="w-5 h-5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+            </div>
+          </div>
+
+          <div class="gallery-item cursor-pointer overflow-hidden rounded-2xl border border-bronze-border/60 bg-alabaster-surface aspect-[4/5] shadow-sm relative group reveal-on-scroll" data-index="3">
+            <img src="assets/images/gallery-2.jpg" alt="Simbol Ikatan Cincin" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-alabaster-card/90 text-bronze shadow"><svg class="w-5 h-5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+            </div>
+          </div>
+
+          <div class="gallery-item cursor-pointer overflow-hidden rounded-2xl border border-bronze-border/60 bg-alabaster-surface aspect-[4/5] shadow-sm relative group reveal-on-scroll reveal-delay-1" data-index="4">
+            <img src="assets/images/gallery-4.jpg" alt="Suasana Pelaminan Adat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-alabaster-card/90 text-bronze shadow"><svg class="w-5 h-5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+            </div>
+          </div>
+
+          <div class="gallery-item cursor-pointer overflow-hidden rounded-2xl border border-bronze-border/60 bg-alabaster-surface aspect-[4/5] shadow-sm relative group reveal-on-scroll reveal-delay-2" data-index="5">
+            <img src="assets/images/gallery-5.jpg" alt="Senyum Bahagia" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-alabaster-card/90 text-bronze shadow"><svg class="w-5 h-5 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 8: RSVP & KONFIRMASI KEHADIRAN
+         ======================================================================= -->
+    <section id="rsvp" class="py-24 px-4 bg-alabaster-surface border-y border-bronze-border/40">
+      <div class="max-w-2xl mx-auto">
+        
+        <div class="text-center mb-12 reveal-on-scroll">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Konfirmasi Kehadiran</h2>
+          <p class="text-sm sm:text-base text-ink-muted leading-relaxed">
+            Kehadiran Anda sangat kami nantikan untuk melengkapi kebahagiaan kami. Mohon konfirmasikan kehadiran Anda melalui formulir di bawah ini:
+          </p>
+        </div>
+
+        <div class="journal-card rounded-2xl p-8 sm:p-10 shadow-lg reveal-on-scroll reveal-delay-1">
+          <form id="rsvp-form" class="space-y-6">
+            
+            <!-- Nama Tamu -->
+            <div>
+              <label for="rsvp-name" class="block text-xs font-sans font-medium text-ink tracking-wider uppercase mb-2">Nama Lengkap</label>
+              <input type="text" id="rsvp-name" required placeholder="Masukkan nama Anda..." class="w-full px-4 py-3 rounded-xl border border-bronze-border bg-alabaster text-sm text-ink placeholder-ink-muted/60 focus:bg-alabaster-card focus:border-bronze focus:ring-1 focus:ring-bronze transition-colors">
+            </div>
+
+            <!-- Jumlah Tamu -->
+            <div>
+              <label for="rsvp-guests" class="block text-xs font-sans font-medium text-ink tracking-wider uppercase mb-2">Jumlah Tamu yang Hadir</label>
+              <select id="rsvp-guests" class="w-full px-4 py-3 rounded-xl border border-bronze-border bg-alabaster text-sm text-ink focus:bg-alabaster-card focus:border-bronze focus:ring-1 focus:ring-bronze transition-colors">
+                <option value="1 Orang">1 Orang</option>
+                <option value="2 Orang">2 Orang</option>
+                <option value="3 Orang">3 Orang (Keluarga)</option>
+              </select>
+            </div>
+
+            <!-- Status Kehadiran Radio / Pills -->
+            <div>
+              <span class="block text-xs font-sans font-medium text-ink tracking-wider uppercase mb-2">Status Konfirmasi</span>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="cursor-pointer">
+                  <input type="radio" name="rsvp-status" value="Hadir" checked class="peer sr-only">
+                  <span class="block py-3 px-4 rounded-xl text-center text-xs sm:text-sm font-medium text-ink-muted ring-1 ring-bronze-border peer-checked:bg-bronze peer-checked:text-alabaster peer-checked:ring-bronze transition-all">
+                    Ya, Saya Hadir
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="rsvp-status" value="Berhalangan" class="peer sr-only">
+                  <span class="block py-3 px-4 rounded-xl text-center text-xs sm:text-sm font-medium text-ink-muted ring-1 ring-bronze-border peer-checked:bg-ink peer-checked:text-alabaster peer-checked:ring-ink transition-all">
+                    Maaf, Berhalangan
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Ucapan & Doa -->
+            <div>
+              <label for="rsvp-message" class="block text-xs font-sans font-medium text-ink tracking-wider uppercase mb-2">Untaian Doa & Ucapan Restu</label>
+              <textarea id="rsvp-message" rows="4" required placeholder="Tuliskan doa restu untuk Marapulai & Anak Daro..." class="w-full px-4 py-3 rounded-xl border border-bronze-border bg-alabaster text-sm text-ink placeholder-ink-muted/60 focus:bg-alabaster-card focus:border-bronze focus:ring-1 focus:ring-bronze transition-colors resize-none"></textarea>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-3 pt-2">
+              <button type="submit" class="w-full py-3.5 px-6 rounded-full bg-bronze hover:bg-bronze-deep text-alabaster font-sans font-medium text-sm tracking-wide shadow-md transition-all flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span>Kirim Ucapan & Konfirmasi Kehadiran</span>
+              </button>
+
+              <button type="button" id="btn-rsvp-whatsapp" class="w-full py-3 px-6 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans font-medium text-xs sm:text-sm tracking-wide shadow-sm transition-all flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Kirim Konfirmasi Langsung ke WhatsApp</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 9: BUKU TAMU & DOA RESTU (WISHES FEED)
+         ======================================================================= -->
+    <section id="ucapan" class="py-24 px-4 bg-alabaster">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3">Untaian Doa & Ucapan Restu</h2>
+          <p class="prose-measure mx-auto text-sm sm:text-base text-ink-muted leading-relaxed">
+            Terima kasih atas segala cinta, doa tulus, dan ucapan penuh berkah dari Ninik Mamak, Bako, keluarga, dan para sahabat terkasih.
+          </p>
+        </div>
+
+        <!-- Wishes Stream Container -->
+        <div id="wishes-stream" class="space-y-4 max-h-[560px] overflow-y-auto pr-2 reveal-on-scroll">
+          <!-- Dynamically populated and pre-seeded by app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 10: TANDA KASIH & AMPLOP DIGITAL (WEDDING GIFT)
+         ======================================================================= -->
+    <section id="hadiah" class="py-24 px-4 bg-alabaster-surface border-y border-bronze-border/40">
+      <div class="max-w-4xl mx-auto text-center">
+        
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-3 reveal-on-scroll">Tanda Kasih & Amplop Digital</h2>
+        <p class="prose-measure mx-auto text-sm sm:text-base text-ink-muted leading-relaxed mb-12 reveal-on-scroll reveal-delay-1">
+          Doa restu Anda adalah karunia terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih untuk melengkapi langkah awal perjalanan kami, kami menyediakan kemudahan melalui:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
+          
+          <!-- Rekening Marapulai (BCA) -->
+          <div class="journal-card rounded-2xl p-8 relative flex flex-col justify-between reveal-on-scroll">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-serif text-xl font-bold tracking-wider text-ink">BCA</span>
+                <span class="text-xs uppercase tracking-widest text-bronze px-2.5 py-1 rounded-full bg-alabaster-surface border border-bronze-border">Bank Central Asia</span>
+              </div>
+              <p class="text-xs text-ink-muted mb-1">Nomor Rekening Marapulai:</p>
+              <p id="bca-account" class="font-serif text-2xl text-ink font-semibold tracking-wider mb-2">8820 4912 3012</p>
+              <p class="text-xs text-ink-muted mb-6">a/n <strong class="text-ink font-medium">Rizky Pratama</strong></p>
+            </div>
+            <button type="button" class="copy-btn w-full py-2.5 px-4 rounded-xl border border-bronze-border bg-alabaster hover:bg-bronze hover:text-alabaster text-ink text-xs font-sans font-medium tracking-wide transition-all flex items-center justify-center gap-2" data-target="bca-account" data-label="Nomor Rekening BCA">
+              <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Salin Nomor Rekening</span>
+            </button>
+          </div>
+
+          <!-- Rekening Anak Daro (Mandiri) -->
+          <div class="journal-card rounded-2xl p-8 relative flex flex-col justify-between reveal-on-scroll reveal-delay-1">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-serif text-xl font-bold tracking-wider text-ink">MANDIRI</span>
+                <span class="text-xs uppercase tracking-widest text-bronze px-2.5 py-1 rounded-full bg-alabaster-surface border border-bronze-border">Bank Mandiri</span>
+              </div>
+              <p class="text-xs text-ink-muted mb-1">Nomor Rekening Anak Daro:</p>
+              <p id="mandiri-account" class="font-serif text-2xl text-ink font-semibold tracking-wider mb-2">137 00 2938 1204</p>
+              <p class="text-xs text-ink-muted mb-6">a/n <strong class="text-ink font-medium">Adelia Putri Maharani</strong></p>
+            </div>
+            <button type="button" class="copy-btn w-full py-2.5 px-4 rounded-xl border border-bronze-border bg-alabaster hover:bg-bronze hover:text-alabaster text-ink text-xs font-sans font-medium tracking-wide transition-all flex items-center justify-center gap-2" data-target="mandiri-account" data-label="Nomor Rekening Mandiri">
+              <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Salin Nomor Rekening</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Alamat Pengiriman Kado Fisik -->
+        <div class="journal-card rounded-2xl p-8 max-w-2xl mx-auto text-center reveal-on-scroll">
+          <div class="w-12 h-12 rounded-full bg-alabaster-surface border border-bronze-border flex items-center justify-center text-bronze mx-auto mb-4">
+            <svg class="w-6 h-6 stroke-current fill-none stroke-[1.5]" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg>
+          </div>
+          <h3 class="font-serif text-xl text-ink font-medium tracking-wide mb-2">Kirim Kado Fisik</h3>
+          <p id="gift-address" class="text-sm text-ink-muted leading-relaxed mb-6">
+            Jl. Pinus Raya Blok B2 No. 18, Kompleks Perumahan Cilandak Indah, Jakarta Selatan, DKI Jakarta 12430<br>
+            <span class="text-xs text-ink font-medium mt-1 inline-block">(Penerima: Rizky Pratama / 0812-9876-5432)</span>
+          </p>
+          <button type="button" class="copy-btn inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-bronze-border bg-alabaster hover:bg-bronze hover:text-alabaster text-ink text-xs font-sans font-medium tracking-wide transition-all" data-target="gift-address" data-label="Alamat Pengiriman Kado">
+            <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>Salin Alamat Lengkap</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 11: PENUTUP & UCAPAN TERIMA KASIH
+         ======================================================================= -->
+    <footer id="penutup" class="py-24 px-4 bg-alabaster text-center relative paper-texture pb-32">
+      <div class="max-w-2xl mx-auto reveal-on-scroll">
+        
+        <div class="w-16 h-16 mx-auto rounded-full bg-alabaster-card border border-bronze-border flex items-center justify-center mb-6 shadow-sm">
+          <span class="font-script text-2xl text-bronze-deep select-none">R & A</span>
+        </div>
+
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal tracking-wide mb-4">Ungkapan Terima Kasih</h2>
+        <p class="text-sm sm:text-base text-ink-muted leading-relaxed mb-10">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu bagi lembaran hidup baru kami.
+        </p>
+
+        <p class="font-serif text-xs tracking-widest text-bronze uppercase mb-3">Kami yang berbahagia,</p>
+        <p class="font-script text-4xl sm:text-5xl text-ink font-normal mb-6">Rizky & Adelia</p>
+        <p class="text-xs text-ink-muted tracking-wider mb-14">
+          Beserta Segenap Ninik Mamak, Bako, & Keluarga Besar Kedua Mempelai<br>
+          <span class="italic text-bronze-deep">Suku Caniago (Bukittinggi) & Suku Koto (Payakumbuh)</span>
+        </p>
+
+        <div class="editorial-rule w-1/2 mx-auto mb-8"></div>
+
+        <!-- Developer Portfolio Branding Card -->
+        <div class="journal-card rounded-2xl p-8 sm:p-10 text-center relative mt-12 mb-8 bg-alabaster-card border border-bronze-border/80 shadow-lg reveal-on-scroll">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-bronze shadow-md bg-alabaster p-0.5">
+            <img src="assets/images/author-zaky.png" alt="Ira Zaky Elmar" class="w-full h-full object-cover object-top rounded-full">
+          </div>
+          <h3 class="font-serif text-2xl text-ink font-medium tracking-wide mb-1">Ira Zaky Elmar</h3>
+          <p class="text-xs text-bronze-deep font-medium tracking-wider mb-3">
+            Software Engineer & Fullstack Web Developer • Politeknik LP3I Padang
+          </p>
+          <p class="prose-measure mx-auto text-xs sm:text-sm text-ink-muted leading-relaxed mb-6">
+            Website undangan pernikahan digital adat Minangkabau ini dikembangkan sebagai karya portofolio web modern dengan standar estetika tinggi, performa optimal, dan pengalaman pengguna interaktif. Terbuka untuk peluang karier, pembuatan website kustom, sistem informasi, serta bimbingan & kolaborasi proyek IT.
+          </p>
+
+          <!-- Social & Connect Badges -->
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="https://zaky24.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-bronze hover:bg-bronze-deep text-alabaster text-xs font-sans font-medium tracking-wide shadow-md transition-all">
+              <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Portofolio (zaky24.github.io)</span>
+            </a>
+            <a href="https://github.com/Zaky24" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-alabaster hover:bg-alabaster-surface border border-bronze-border text-ink text-xs font-sans font-medium tracking-wide shadow-sm transition-all">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub @Zaky24</span>
+            </a>
+            <a href="https://wa.me/6289507630763" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-sans font-medium tracking-wide shadow-sm transition-all">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>WhatsApp</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ira-zaky-0b6779447" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-sans font-medium tracking-wide shadow-sm transition-all">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/zaky__24" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-alabaster hover:bg-alabaster-surface border border-bronze-border text-ink text-xs font-sans font-medium tracking-wide shadow-sm transition-all">
+              <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>@zaky__24</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio Showcase Signature -->
+        <p class="text-xs text-ink-muted">
+          ELInvite • Digital Wedding Invitation Experience • Crafted with love by <a href="https://zaky24.github.io/" target="_blank" rel="noopener noreferrer" class="text-bronze hover:underline font-medium">Ira Zaky Elmar</a>
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- =========================================================================
+       PHOTO LIGHTBOX MODAL
+       ========================================================================= -->
+  <div id="lightbox-modal" class="lightbox-backdrop fixed inset-0 z-50 bg-ink/90 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Penampil Galeri Foto">
+    <button id="lightbox-close" type="button" class="absolute top-6 right-6 text-alabaster/80 hover:text-alabaster p-2 rounded-full focus:outline-none" aria-label="Tutup Galeri">
+      <svg class="w-7 h-7 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="18" y2="6"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <button id="lightbox-prev" type="button" class="absolute left-4 top-1/2 -translate-y-1/2 text-alabaster/80 hover:text-alabaster p-2 rounded-full focus:outline-none" aria-label="Foto Sebelumnya">
+      <svg class="w-8 h-8 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-img" src="assets/images/hero-couple.jpg" alt="Tampilan Foto Penuh" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border border-bronze-border/40">
+      <p id="lightbox-caption" class="text-alabaster/90 text-sm font-humanist mt-4 tracking-wide text-center"></p>
+    </div>
+
+    <button id="lightbox-next" type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-alabaster/80 hover:text-alabaster p-2 rounded-full focus:outline-none" aria-label="Foto Selanjutnya">
+      <svg class="w-8 h-8 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       TOAST FEEDBACK NOTICE
+       ========================================================================= -->
+  <div id="toast-notice" class="toast-notice fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-ink text-alabaster px-6 py-3 rounded-full text-xs sm:text-sm font-sans shadow-2xl flex items-center gap-2 border border-bronze/40" role="alert">
+    <svg class="w-4 h-4 text-bronze shrink-0 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toast-message">Teks berhasil disalin ke papan klip!</span>
+  </div>
+
+  <!-- Main Application Logic -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
