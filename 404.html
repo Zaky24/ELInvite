@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Halaman Tidak Ditemukan | ELInvite</title>
+  <meta name="theme-color" content="#FAF8F5">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%239E7D53'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF8F5' font-family='serif' font-size='15' font-weight='bold'>RA</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#FAF8F5',
+            'alabaster-surface': '#F5F1EB',
+            ink: '#1A1816',
+            'ink-muted': '#665F58',
+            bronze: {
+              DEFAULT: '#9E7D53',
+              deep: '#7D5F38',
+              light: '#E4D5C2',
+              border: '#D8C5A8',
+            }
+          },
+          fontFamily: {
+            serif: ['Marcellus', 'Georgia', 'serif'],
+            humanist: ['Tenor Sans', 'sans-serif'],
+            sans: ['Jost', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-alabaster text-ink font-humanist min-h-screen flex items-center justify-center p-6 selection:bg-bronze-light selection:text-ink">
+  <div class="max-w-md w-full text-center bg-white border border-bronze-border/50 rounded-2xl p-8 sm:p-10 shadow-xl">
+    <div class="w-16 h-16 rounded-full bg-bronze/10 border border-bronze-border mx-auto flex items-center justify-center text-bronze mb-6">
+      <span class="font-serif text-2xl font-bold">404</span>
+    </div>
+    
+    <p class="text-xs uppercase tracking-[0.25em] text-bronze font-sans font-semibold mb-2">ELInvite Digital Invitation</p>
+    <h1 class="font-serif text-2xl sm:text-3xl font-normal text-ink mb-3">Halaman Tidak Ditemukan</h1>
+    <p class="text-ink-muted text-sm leading-relaxed mb-8 font-sans">
+      Tautan yang Anda tuju mungkin salah ketik atau telah dipindahkan. Silakan kembali ke halaman utama undangan pernikahan.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="./" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-bronze hover:bg-bronze-deep text-white text-xs font-sans font-semibold tracking-wider uppercase transition-all shadow-md">
+        <span>Buka Undangan Utama</span>
+        <svg class="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-bronze-border/30 text-xs text-ink-muted font-sans">
+      Baralek Gadang Rizky Pratama & Adelia Putri Maharani
+    </div>
+  </div>
+</body>
+</html>
