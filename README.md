@@ -1,8 +1,6 @@
-# 💌 ELInvite — Undangan Pernikahan Digital Adat Minangkabau (Rizky & Adelia)
+# 💌 ELInvite — Undangan Pernikahan Digital Adat Minangkabau
 
-**ELInvite** (*Elmar Digital Invitation*) adalah website undangan pernikahan digital modern, berkelas, dan interaktif yang dibangun dengan perpaduan nilai budaya Minangkabau (*Baralek Gadang*) dan standar estetika editorial tinggi (*The Lovers' Vow Journal*), siap di-deploy langsung ke **GitHub Pages**.
-
-Dibuat khusus sebagai *showcase project* portofolio oleh **Ira Zaky Elmar** (Software Engineer & Fullstack Web Developer).
+**ELInvite** adalah website undangan pernikahan digital modern, berkelas, dan interaktif yang dibangun dengan perpaduan nilai budaya Minangkabau dan standar estetika editorial tinggi (*The Lovers' Vow Journal*).
 
 ---
 
@@ -10,9 +8,8 @@ Dibuat khusus sebagai *showcase project* portofolio oleh **Ira Zaky Elmar** (Sof
 
 Proyek ini dirancang dan dikembangkan oleh:
 
-- **Nama Proyek**: **ELInvite** (*Elmar Digital Invitation*)
+- **Nama Proyek**: **ELInvite**
 - **Pengembang**: **Ira Zaky Elmar**
-- **Peran**: Software Engineer, Web & Fullstack Developer
 - **Institusi**: Politeknik LP3I Kampus Padang (Manajemen Informatika)
 - **Website Portofolio**: [zaky24.github.io](https://zaky24.github.io/)
 - **GitHub**: [@Zaky24](https://github.com/Zaky24)
@@ -94,38 +91,3 @@ Proyek ini dirancang dan dikembangkan oleh:
 - **Web Audio API**: Audio synthesis fallback & gesture unlock.
 - **HTML5 Canvas**: Engine partikel kelopak bunga emas melayang.
 - **Google Fonts**: `Marcellus` (display serif), `Tenor Sans` (humanist body), `Jost` (UI sans), dan `Pinyon Script` (monogram).
-
----
-
-## 🚀 Cara Menjalankan Secara Lokal
-
-1. Buka folder proyek di browser atau jalankan server lokal:
-   ```bash
-   # Menggunakan Node.js npx serve
-   npx serve .
-   
-   # Atau langsung buka file index.html di browser
-   ```
-2. Coba fitur personalisasi nama tamu di URL:
-   `http://localhost:3000/?to=Bapak+Budi+Santoso`
-
----
-
-## 🌐 Cara Deploy ke GitHub Pages
-
-Karena proyek ini menggunakan HTML, Tailwind CSS, dan Vanilla JavaScript statis murni:
-
-1. Buat repository baru di GitHub dengan nama: `ELInvite` (atau `el-invite`).
-2. Inisialisasi git dan push kode ke repository Anda:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: complete luxury Minangkabau digital wedding invitation (ELInvite)"
-   git branch -M main
-   git remote add origin https://github.com/Zaky24/ELInvite.git
-   git push -u origin main
-   ```
-3. Buka menu **Settings** > **Pages** di repository GitHub Anda.
-4. Pilih Source: **Deploy from a branch**, Branch: **main**, folder: `/(root)`.
-5. Klik **Save**. Website Anda langsung live dan online di:
-   `https://zaky24.github.io/ELInvite/`!
